@@ -1,0 +1,13 @@
+﻿{
+    "version": "1.0.0-*",
+    "dependencies": {
+        "FluentMigrator": "1.4.0",
+        "FluentMigrator.Runner.Aspnet": ""
+    },
+    "frameworks": {
+        "aspnet50": { }
+    },
+    "commands": {
+        "migrate": "FluentMigrator.Runner.Aspnet"
+    }
+}
