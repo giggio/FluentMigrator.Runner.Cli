@@ -8,7 +8,7 @@ The nupkg is [on Nuget.org](https://www.nuget.org/packages/FluentMigrator.Runner
 simply run:
 
 ```powershell
-kpm install FluentMigrator.Runner.Aspnet
+dnu install FluentMigrator.Runner.Aspnet
 ```
 
 And add the command with name `FluentMigrator.Runner.Aspnet` to your project.
@@ -35,19 +35,19 @@ Or use the Package Manager in Visual Studio.
 
 ## Running
 
-If you simply run `k migrate` the command line options will show up for you
+If you simply run `dnx migrate` the command line options will show up for you
 
 ````powershell
-k migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
+dnx migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
 ````
 
 Here are all the options:
 
 ````
 Usage:
-    k run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
-    k run --version
-    k run --help
+    dnx run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
+    dnx run --version
+    dnx run --help
 ````
 
 ## Maintainer
