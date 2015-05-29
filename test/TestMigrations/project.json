@@ -1,13 +1,14 @@
 ﻿{
     "version": "1.0.0-*",
     "dependencies": {
-        "FluentMigrator": "1.4.0",
+        "FluentMigrator": "1.5.1",
         "FluentMigrator.Runner.Aspnet": ""
     },
     "frameworks": {
-        "aspnet50": { }
+        "dnx451": { }
     },
     "commands": {
-        "migrate": "FluentMigrator.Runner.Aspnet"
+        "migrate": "FluentMigrator.Runner.Aspnet",
+        "migrateLazy": "FluentMigrator.Runner.Aspnet --provider sqlserver2012 --connectionString Server=(localdb)\\mssqllocaldb;Database=TestMigrations;Trusted_Connection=True;MultipleActiveResultSets=true"
     }
 }

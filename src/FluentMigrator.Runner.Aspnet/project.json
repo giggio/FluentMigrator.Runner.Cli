@@ -1,21 +1,28 @@
 ﻿{
-    "version": "1.0.0-alpha1",
-    "authors": ["Giovanni Bassi"],
-    "description": "A runner for ASP.NET 5+ for Fluent Migrator.",
-    "dependencies": {
-        "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta3",
-        "FluentMigrator.Runner": "1.4.0",
-        "docopt.net": "0.6.1.6"
-    },
-    "commands": {
-        "FluentMigrator.Runner.Aspnet": "run"
-    },
-    "frameworks": {
-        "aspnet50": { }
-    },
-    "bundleExclude": [
-        "**.kproj",
-        "**.user",
-        "**.vspscc"
-    ]
+  "title": "Fluent Migrator Runner for ASP.NET 5+",
+  "version": "1.0.0-alpha2",
+  "authors": [ "Giovanni Bassi" ],
+  "description": "A runner for ASP.NET 5+ for Fluent Migrator.",
+  "summary": "A runner for ASP.NET 5+ for Fluent Migrator.",
+  "copyright": "Giovanni Bassi (c) 2015",
+  "projectUrl": "https://github.com/giggio/FluentMigrator.Runner.Aspnet",
+  "licenseUrl": "https://raw.githubusercontent.com/giggio/FluentMigrator.Runner.Aspnet/master/LICENSE.txt",
+  "owners": [ "Giovanni Bassi" ],
+  "tags": [ "FluentMigrator", "Migration", "Migrations" ],
+  "dependencies": {
+    "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4",
+    "FluentMigrator.Runner": "1.5.1",
+    "docopt.net": "0.6.1.6"
+  },
+  "commands": {
+    "FluentMigrator.Runner.Aspnet": "run"
+  },
+  "frameworks": {
+    "dnx451": { }
+  },
+  "publishExclude": [
+    "**.xproj",
+    "**.user",
+    "**.vspscc"
+  ]
 }

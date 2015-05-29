@@ -1,16 +1,14 @@
 ﻿using DocoptNet;
+using FluentMigrator.Runner.Announcers;
+using FluentMigrator.Runner.Initialization;
 using Microsoft.Framework.Runtime;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using static System.Console;
-using FluentMigrator.Runner;
-using FluentMigrator.Runner.Announcers;
-using FluentMigrator.Runner.Initialization;
-using FluentMigrator.Runner.Processors;
-using System.IO;
-using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace FluentMigrator.Runner.Aspnet
 {
@@ -29,9 +27,9 @@ namespace FluentMigrator.Runner.Aspnet
         {
             const string usage = @"Fluent Migrator ASP.NET Runner
   Usage:
-    k run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
-    k run --version
-    k run --help
+    dnx . run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
+    dnx . run --version
+    dnx . run --help
 
   Options:
     --provider PROVIDER -p PROVIDER                 Database type. Possible values:
@@ -60,7 +58,7 @@ namespace FluentMigrator.Runner.Aspnet
     --version -v                                    Show version.
 ";
 
-            var argsWithRun = new[] { "run" }.Union(args).ToArray();
+            var argsWithRun = new[] { ".", "run" }.Union(args).ToArray();
             var arguments = new Docopt().Apply(usage, argsWithRun, version: Assembly.GetExecutingAssembly().GetName().Version, exit: true);
             verbose = arguments["--verbose"].IsTrue;
             provider = arguments["--provider"].ToString();
@@ -87,7 +85,7 @@ namespace FluentMigrator.Runner.Aspnet
                     WriteLine($"Directory {assembly} does not exist.");
                     return;
                 }
-                assembly = KpmBuild();
+                assembly = DnuBuild();
                 if (assembly == null) return;
             }
             if (arguments["--task"] != null)
@@ -104,26 +102,26 @@ namespace FluentMigrator.Runner.Aspnet
                 ExecuteMigrations(arguments["--output"].ToString());
         }
 
-        private string KpmBuild()
+        private string DnuBuild()
         {
-            var kpmPath = Environment.GetEnvironmentVariable("PATH").Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(p => File.Exists(Path.Combine(p, "kpm.cmd")));
-            if (kpmPath == null)
+            var dnuPath = Environment.GetEnvironmentVariable("PATH").Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(p => File.Exists(Path.Combine(p, "dnu.cmd")));
+            if (dnuPath == null)
             {
-                WriteLine("Kpm not found.");
+                WriteLine("Dnu not found.");
                 return null;
             }
-            var kpmCmd = Path.Combine(kpmPath, "kpm.cmd");
-            if (verbose) WriteLine($"Found kpm: {kpmCmd}");
+            var dnuCmd = Path.Combine(dnuPath, "dnu.cmd");
+            if (verbose) WriteLine($"Found dnu: {dnuCmd}");
             var cmd = Environment.GetEnvironmentVariable("ComSpec");
             if (verbose) WriteLine($"Building project directory: {assembly}");
-            var processStartInfo = new ProcessStartInfo(cmd, $@"/c ""{kpmCmd}"" build --quiet --configuration Debug --framework aspnet50");
+            var processStartInfo = new ProcessStartInfo(cmd, $@"/c ""{dnuCmd}"" build --quiet --configuration Debug --framework dnx451");
             processStartInfo.WorkingDirectory = assembly;
             processStartInfo.UseShellExecute = false;
             if (!verbose) processStartInfo.RedirectStandardOutput = true;
             var process = new Process { StartInfo = processStartInfo };
             process.Start();
             process.WaitForExit();
-            var migrationsDllPath = Path.Combine(assembly, @"bin\Debug\aspnet50", Path.GetFileName(assembly) + ".dll");
+            var migrationsDllPath = Path.Combine(assembly, @"bin\Debug\dnx451", Path.GetFileName(assembly) + ".dll");
             if (!File.Exists(migrationsDllPath))
             {
                 WriteLine($"Could not find assembly ${migrationsDllPath}.");
@@ -173,7 +171,7 @@ namespace FluentMigrator.Runner.Aspnet
             {
                 Database = provider,
                 Connection = connection,
-                Target = assembly,
+                Targets = new[] { assembly },
                 PreviewOnly = false,
                 Task = task,
                 Version = migrateToVersion,
