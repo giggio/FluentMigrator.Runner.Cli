@@ -19,11 +19,11 @@ Or add the runner to your project manually, here is an example project.json:
 {
     "version": "1.0.0-*",
     "dependencies": {
-        "FluentMigrator": "1.4.0",
+        "FluentMigrator": "1.5.1",
         "FluentMigrator.Runner.Aspnet": "1.0.0-*"
     },
     "frameworks": {
-        "aspnet50": { }
+        "dnx451": { }
     },
     "commands": {
         "migrate": "FluentMigrator.Runner.Aspnet"
@@ -38,16 +38,16 @@ Or use the Package Manager in Visual Studio.
 If you simply run `dnx migrate` the command line options will show up for you
 
 ````powershell
-dnx migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
+dnx . migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
 ````
 
 Here are all the options:
 
 ````
 Usage:
-    dnx run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
-    dnx run --version
-    dnx run --help
+    dnx . run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
+    dnx . run --version
+    dnx . run --help
 ````
 
 ## Maintainer
