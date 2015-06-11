@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Framework.ConfigurationModel;
 using static System.Console;
 
 namespace FluentMigrator.Runner.Aspnet
@@ -27,7 +28,7 @@ namespace FluentMigrator.Runner.Aspnet
         {
             const string usage = @"Fluent Migrator ASP.NET Runner
   Usage:
-    dnx . run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
+    dnx . run --provider PROVIDER (--connectionString CONNECTION | --configureConnection CONFIG) [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
     dnx . run --version
     dnx . run --help
 
@@ -44,7 +45,9 @@ namespace FluentMigrator.Runner.Aspnet
                                                        * oracle
                                                        * sqlite
                                                        * jet
-    --connectionString CONNECTION -c CONNECTION           The connection string. Required.
+    --connectionString CONNECTION -c CONNECTION     The connection string. Required.
+    --configureConnection CONFIG                    Read the connection string from configuration. Supports users secrets.
+                                                    Specify the configuration key name (full path) to read from
     --assembly ASSEMBLY -a ASSEMBLY                 Optional. The project or assembly which contains the migrations
                                                     You may use a dll path or a path do ASP.NET 5+ project.
                                                     It will default to the current path.
@@ -57,16 +60,26 @@ namespace FluentMigrator.Runner.Aspnet
     --help -h                                       Show this screen.
     --version -v                                    Show version.
 ";
-
             var argsWithRun = new[] { ".", "run" }.Union(args).ToArray();
             var arguments = new Docopt().Apply(usage, argsWithRun, version: Assembly.GetExecutingAssembly().GetName().Version, exit: true);
             verbose = arguments["--verbose"].IsTrue;
             provider = arguments["--provider"].ToString();
-            connection = arguments["--connectionString"].ToString();
+            connection = arguments["--connectionString"]?.ToString();
+            configurationName = arguments["--configureConnection"]?.ToString();
             assembly = (arguments["--assembly"] != null)
                 ? assembly = arguments["--assembly"].ToString()
                 : appEnvironment.ApplicationBasePath;
-            if (!Path.IsPathRooted(assembly))
+
+			if (!string.IsNullOrEmpty(configurationName)) {
+				if (!string.IsNullOrEmpty(connection)) {
+					WriteLine("Both connectionString and configureConnection specified, please use only one!");
+					return;
+				}
+				var config = new Configuration().AddUserSecrets();
+				connection = config.Get(configurationName);
+			}
+
+			if (!Path.IsPathRooted(assembly))
                 assembly = Path.GetFullPath(Path.Combine(appEnvironment.ApplicationBasePath, assembly));
             if (string.Compare(Path.GetExtension(assembly), ".dll", StringComparison.OrdinalIgnoreCase) == 0)
             {
@@ -91,7 +104,7 @@ namespace FluentMigrator.Runner.Aspnet
             if (arguments["--task"] != null)
                 task = arguments["--task"].ToString();
             if (arguments["--migrateToVersion"] != null)
-                migrateToVersion = arguments["--migrateToVersion"].AsInt;
+                migrateToVersion = arguments["--migrateToVersion"].AsLong();
             if (arguments["--profile"] != null)
                 profile = arguments["--profile"].ToString();
             if (arguments["--tag"] != null)
@@ -134,8 +147,9 @@ namespace FluentMigrator.Runner.Aspnet
         private bool verbose;
         private string provider;
         private string connection;
+	    private string configurationName;
         private string task;
-        private int migrateToVersion;
+        private long migrateToVersion;
         private string profile;
         private IEnumerable<string> tags;
         private string assembly;
