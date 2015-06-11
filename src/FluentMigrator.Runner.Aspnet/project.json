@@ -11,6 +11,8 @@
   "tags": [ "FluentMigrator", "Migration", "Migrations" ],
   "dependencies": {
     "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta4",
+	"Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
+	"Microsoft.Framework.ConfigurationModel.UserSecrets": "1.0.0-beta4",
     "FluentMigrator.Runner": "1.5.1",
     "docopt.net": "0.6.1.6"
   },
