@@ -11,7 +11,7 @@
           "lib/net40/DocoptNet.dll": {}
         }
       },
-      "FluentMigrator/1.5.1.0": {
+      "FluentMigrator.ASPNET5Temp/1.5.1": {
         "compile": {
           "lib/40/FluentMigrator.dll": {}
         },
@@ -19,9 +19,9 @@
           "lib/40/FluentMigrator.dll": {}
         }
       },
-      "FluentMigrator.Runner/1.5.1.0": {
+      "FluentMigrator.Runner.ASPNET5Temp/1.5.1": {
         "dependencies": {
-          "FluentMigrator": "1.5.1.0"
+          "FluentMigrator.ASPNET5Temp": "1.5.1"
         },
         "compile": {
           "lib/40/FluentMigrator.Runner.dll": {}
@@ -62,12 +62,12 @@
         "tools/install.ps1"
       ]
     },
-    "FluentMigrator/1.5.1.0": {
-      "sha512": "VGJwP5mRuIIXHOBrvCMF1a60MFnx8W6t8Uv/6lzS8h9GbEQC2VhAvf2ELBNBtvmGlwDXwISh/NjfRJs3R7e0zA==",
+    "FluentMigrator.ASPNET5Temp/1.5.1": {
+      "sha512": "b8t0EpSnOGYvgKcIQrvxL3UxVPJ2cZQIHrQ3c3pkdep/eIABZoaisSBYtDJIimUq2NBzsBadwQmcVVUPKJMe3g==",
       "files": [
-        "FluentMigrator.1.5.1.0.nupkg",
-        "FluentMigrator.1.5.1.0.nupkg.sha512",
-        "FluentMigrator.nuspec",
+        "FluentMigrator.ASPNET5Temp.1.5.1.nupkg",
+        "FluentMigrator.ASPNET5Temp.1.5.1.nupkg.sha512",
+        "FluentMigrator.ASPNET5Temp.nuspec",
         "lib/35/FluentMigrator.dll",
         "lib/35/FluentMigrator.pdb",
         "lib/35/FluentMigrator.xml",
@@ -119,12 +119,12 @@
         "tools/x86/Microsoft.VC90.CRT/README_ENU.txt"
       ]
     },
-    "FluentMigrator.Runner/1.5.1.0": {
-      "sha512": "1fh4KK0QINre041T+mqUIlCuvsjsgN4uyUsdvLEefTGM+2Qe8ovreMy1FPn1E3RWhgFA3wSrwJgN3OUW3t6TKg==",
+    "FluentMigrator.Runner.ASPNET5Temp/1.5.1": {
+      "sha512": "MqNbTVbaunagyskqwYGCGwVgSEGGOGbb1hqLxKH88px7SzPBQkm5PI+esYDcW4G9GF2jK9R+pxfB6JJXE+TfsQ==",
       "files": [
-        "FluentMigrator.Runner.1.5.1.0.nupkg",
-        "FluentMigrator.Runner.1.5.1.0.nupkg.sha512",
-        "FluentMigrator.Runner.nuspec",
+        "FluentMigrator.Runner.ASPNET5Temp.1.5.1.nupkg",
+        "FluentMigrator.Runner.ASPNET5Temp.1.5.1.nupkg.sha512",
+        "FluentMigrator.Runner.ASPNET5Temp.nuspec",
         "lib/35/FluentMigrator.Runner.dll",
         "lib/35/FluentMigrator.Runner.pdb",
         "lib/40/FluentMigrator.Runner.dll",
@@ -147,7 +147,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "FluentMigrator >= 1.5.1",
+      "FluentMigrator.ASPNET5Temp >= 1.5.1",
       "FluentMigrator.Runner.Aspnet "
     ],
     "DNX,Version=v4.5.1": []
