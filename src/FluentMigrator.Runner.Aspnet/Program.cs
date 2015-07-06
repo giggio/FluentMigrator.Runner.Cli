@@ -15,12 +15,10 @@ namespace FluentMigrator.Runner.Aspnet
     public class Program
     {
         private IApplicationEnvironment appEnvironment;
-        private IServiceProvider serviceProvider;
 
-        public Program(IApplicationEnvironment appEnvironment, IServiceProvider serviceProvider)
+        public Program(IApplicationEnvironment appEnvironment)
         {
             this.appEnvironment = appEnvironment;
-            this.serviceProvider = serviceProvider;
         }
 
         public void Main(string[] args)
