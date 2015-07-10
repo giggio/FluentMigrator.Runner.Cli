@@ -1,29 +1,54 @@
 {
   "locked": false,
-  "version": -9998,
-  "projectFileDependencyGroups": {
-    "": [
-      "FluentMigrator >= 1.5.1",
-      "FluentMigrator.Runner.Aspnet "
-    ],
-    "DNX,Version=v4.5.1": []
+  "version": -9996,
+  "targets": {
+    "DNX,Version=v4.5.1": {
+      "docopt.net/0.6.1.6": {
+        "compile": {
+          "lib/net40/DocoptNet.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DocoptNet.dll": {}
+        }
+      },
+      "FluentMigrator.ASPNET5Temp/1.5.1": {
+        "compile": {
+          "lib/40/FluentMigrator.dll": {}
+        },
+        "runtime": {
+          "lib/40/FluentMigrator.dll": {}
+        }
+      },
+      "FluentMigrator.Runner.ASPNET5Temp/1.5.1": {
+        "dependencies": {
+          "FluentMigrator.ASPNET5Temp": "1.5.1"
+        },
+        "compile": {
+          "lib/40/FluentMigrator.Runner.dll": {}
+        },
+        "runtime": {
+          "lib/40/FluentMigrator.Runner.dll": {}
+        }
+      },
+      "Microsoft.Framework.Runtime.Abstractions/1.0.0-beta5": {
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll": {}
+        }
+      }
+    }
   },
   "libraries": {
     "docopt.net/0.6.1.6": {
-      "serviceable": false,
-      "sha": "Z+Qeelyan6k/vu+y616cK+6NA3pXMwxIJvpgVoW3PPe1IHOjiRYFH7+iWnLx4ATomweGXTUIMQmbykd8409e4w==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net40/DocoptNet.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net40/DocoptNet.dll"
-          ]
-        }
-      },
+      "sha512": "Z+Qeelyan6k/vu+y616cK+6NA3pXMwxIJvpgVoW3PPe1IHOjiRYFH7+iWnLx4ATomweGXTUIMQmbykd8409e4w==",
       "files": [
         "docopt.net.0.6.1.6.nupkg",
         "docopt.net.0.6.1.6.nupkg.sha512",
@@ -37,25 +62,12 @@
         "tools/install.ps1"
       ]
     },
-    "FluentMigrator/1.5.1.0": {
-      "serviceable": false,
-      "sha": "VGJwP5mRuIIXHOBrvCMF1a60MFnx8W6t8Uv/6lzS8h9GbEQC2VhAvf2ELBNBtvmGlwDXwISh/NjfRJs3R7e0zA==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/40/FluentMigrator.dll"
-          ],
-          "compileAssemblies": [
-            "lib/40/FluentMigrator.dll"
-          ]
-        }
-      },
+    "FluentMigrator.ASPNET5Temp/1.5.1": {
+      "sha512": "b8t0EpSnOGYvgKcIQrvxL3UxVPJ2cZQIHrQ3c3pkdep/eIABZoaisSBYtDJIimUq2NBzsBadwQmcVVUPKJMe3g==",
       "files": [
-        "FluentMigrator.1.5.1.0.nupkg",
-        "FluentMigrator.1.5.1.0.nupkg.sha512",
-        "FluentMigrator.nuspec",
+        "FluentMigrator.ASPNET5Temp.1.5.1.nupkg",
+        "FluentMigrator.ASPNET5Temp.1.5.1.nupkg.sha512",
+        "FluentMigrator.ASPNET5Temp.nuspec",
         "lib/35/FluentMigrator.dll",
         "lib/35/FluentMigrator.pdb",
         "lib/35/FluentMigrator.xml",
@@ -107,62 +119,37 @@
         "tools/x86/Microsoft.VC90.CRT/README_ENU.txt"
       ]
     },
-    "FluentMigrator.Runner/1.5.1.0": {
-      "serviceable": false,
-      "sha": "1fh4KK0QINre041T+mqUIlCuvsjsgN4uyUsdvLEefTGM+2Qe8ovreMy1FPn1E3RWhgFA3wSrwJgN3OUW3t6TKg==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "FluentMigrator": "1.5.1.0"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/40/FluentMigrator.Runner.dll"
-          ],
-          "compileAssemblies": [
-            "lib/40/FluentMigrator.Runner.dll"
-          ]
-        }
-      },
+    "FluentMigrator.Runner.ASPNET5Temp/1.5.1": {
+      "sha512": "MqNbTVbaunagyskqwYGCGwVgSEGGOGbb1hqLxKH88px7SzPBQkm5PI+esYDcW4G9GF2jK9R+pxfB6JJXE+TfsQ==",
       "files": [
-        "FluentMigrator.Runner.1.5.1.0.nupkg",
-        "FluentMigrator.Runner.1.5.1.0.nupkg.sha512",
-        "FluentMigrator.Runner.nuspec",
+        "FluentMigrator.Runner.ASPNET5Temp.1.5.1.nupkg",
+        "FluentMigrator.Runner.ASPNET5Temp.1.5.1.nupkg.sha512",
+        "FluentMigrator.Runner.ASPNET5Temp.nuspec",
         "lib/35/FluentMigrator.Runner.dll",
         "lib/35/FluentMigrator.Runner.pdb",
         "lib/40/FluentMigrator.Runner.dll",
         "lib/40/FluentMigrator.Runner.pdb"
       ]
     },
-    "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta4": {
+    "Microsoft.Framework.Runtime.Abstractions/1.0.0-beta5": {
       "serviceable": true,
-      "sha": "RrZdqvUm8QbgxnZQuafYGo6NezoKx7VqAfAtHVzoKBm3GSV8xlPh90u1fsGhNCv37xJNk5PuRCa4Mq27ko7pLw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-          ]
-        }
-      },
+      "sha512": "w8FtN1i6dcKxCEF3fX2CYNA9LfkQ+vpGqmGAzRJn1Xg3N+73rywlIl7ijZLgCHS8MH0XO8KqpUCVR05UtVvJPg==",
       "files": [
-        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg",
-        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta4.nupkg.sha512",
-        "Microsoft.Framework.Runtime.Interfaces.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.xml"
+        "Microsoft.Framework.Runtime.Abstractions.1.0.0-beta5.nupkg",
+        "Microsoft.Framework.Runtime.Abstractions.1.0.0-beta5.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Abstractions.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Abstractions.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Abstractions.xml"
       ]
     }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "FluentMigrator.ASPNET5Temp >= 1.5.1",
+      "FluentMigrator.Runner.Aspnet "
+    ],
+    "DNX,Version=v4.5.1": []
   }
 }
