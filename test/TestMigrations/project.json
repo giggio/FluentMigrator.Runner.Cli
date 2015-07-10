@@ -2,13 +2,13 @@
     "version": "1.0.0-*",
     "dependencies": {
         "FluentMigrator.ASPNET5Temp": "1.5.1",
-        "FluentMigrator.Runner.Aspnet": ""
+        "FluentMigrator.Runner.DNX": ""
     },
     "frameworks": {
         "dnx451": { }
     },
     "commands": {
-        "migrate": "FluentMigrator.Runner.Aspnet",
-        "migrateLazy": "FluentMigrator.Runner.Aspnet --provider sqlserver2012 --connectionString Server=(localdb)\\mssqllocaldb;Database=TestMigrations;Trusted_Connection=True;MultipleActiveResultSets=true"
+        "migrate": "FluentMigrator.Runner.DNX",
+        "migrateLazy": "FluentMigrator.Runner.DNX --provider sqlserver2012 --connectionString Server=(localdb)\\mssqllocaldb;Database=TestMigrations;Trusted_Connection=True;MultipleActiveResultSets=true"
     }
 }

@@ -1,8 +1,8 @@
 {
   "profiles": [
     {
-      "name": "FluentMigrator.Runner.Aspnet",
-      "commandName": "FluentMigrator.Runner.Aspnet",
+      "name": "FluentMigrator.Runner.DNX",
+      "commandName": "FluentMigrator.Runner.DNX",
       "commandLineArgs": " --assembly  D:\\proj\\rabiscos\\WebApplication6\\src\\WebApplication6 --provider p --connectionString c"
     }
   ]

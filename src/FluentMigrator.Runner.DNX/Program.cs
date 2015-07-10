@@ -10,7 +10,7 @@ using System.Linq;
 using System.Reflection;
 using static System.Console;
 
-namespace FluentMigrator.Runner.Aspnet
+namespace FluentMigrator.Runner.DNX
 {
     public class Program
     {
@@ -23,7 +23,7 @@ namespace FluentMigrator.Runner.Aspnet
 
         public void Main(string[] args)
         {
-            const string usage = @"Fluent Migrator ASP.NET Runner
+            const string usage = @"Fluent Migrator DNX Runner
   Usage:
     dnx . run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
     dnx . run --version
@@ -44,7 +44,7 @@ namespace FluentMigrator.Runner.Aspnet
                                                        * jet
     --connectionString CONNECTION -c CONNECTION           The connection string. Required.
     --assembly ASSEMBLY -a ASSEMBLY                 Optional. The project or assembly which contains the migrations
-                                                    You may use a dll path or a path do ASP.NET 5+ project.
+                                                    You may use a dll path or a path do DNX project.
                                                     It will default to the current path.
     --output FILE -o FILE                           File to output the script. If specified will write to a file instead of running the migration. [default: migration.sql]
     --task TASK -t TASK                             The task to run. [default: migrate]

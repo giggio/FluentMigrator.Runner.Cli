@@ -1,16 +1,16 @@
 ﻿{
-  "title": "Fluent Migrator Runner for ASP.NET 5+",
-  "version": "1.0.0-alpha5",
+  "title": "Fluent Migrator Runner for DNX 5+",
+  "version": "1.0.0-alpha6",
   "authors": [ "Giovanni Bassi" ],
-  "description": "A runner for ASP.NET 5+ for Fluent Migrator.",
-  "summary": "A runner for ASP.NET 5+ for Fluent Migrator.",
+  "description": "A runner for DNX for Fluent Migrator.",
+  "summary": "A runner for DNX for Fluent Migrator.",
   "copyright": "Giovanni Bassi (c) 2015",
   "repository": {
     "type": "git",
-    "url": "git://github.com/giggio/FluentMigrator.Runner.Aspnet"
+    "url": "git://github.com/giggio/FluentMigrator.Runner.DNX"
   },
-  "projectUrl": "https://github.com/giggio/FluentMigrator.Runner.Aspnet",
-  "licenseUrl": "https://raw.githubusercontent.com/giggio/FluentMigrator.Runner.Aspnet/master/LICENSE.txt",
+  "projectUrl": "https://github.com/giggio/FluentMigrator.Runner.DNX",
+  "licenseUrl": "https://raw.githubusercontent.com/giggio/FluentMigrator.Runner.DNX/master/LICENSE.txt",
   "owners": [ "Giovanni Bassi" ],
   "tags": [ "FluentMigrator", "Migration", "Migrations" ],
   "dependencies": {
@@ -20,7 +20,7 @@
     "docopt.net": "0.6.1.6"
   },
   "commands": {
-    "fm": "FluentMigrator.Runner.Aspnet"
+    "fm": "FluentMigrator.Runner.DNX"
   },
   "frameworks": {
     "dnx451": { }
