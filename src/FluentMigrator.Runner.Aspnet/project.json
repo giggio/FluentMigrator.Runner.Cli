@@ -1,6 +1,6 @@
 ﻿{
   "title": "Fluent Migrator Runner for ASP.NET 5+",
-  "version": "1.0.0-alpha4",
+  "version": "1.0.0-alpha5",
   "authors": [ "Giovanni Bassi" ],
   "description": "A runner for ASP.NET 5+ for Fluent Migrator.",
   "summary": "A runner for ASP.NET 5+ for Fluent Migrator.",
