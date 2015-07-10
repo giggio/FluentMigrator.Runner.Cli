@@ -197,3 +197,7 @@ FakesAssemblies/
 !gruntfile.js
 
 .vs
+
+# DNX
+project.lock.json
+artifacts/
