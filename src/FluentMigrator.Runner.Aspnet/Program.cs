@@ -91,7 +91,7 @@ namespace FluentMigrator.Runner.Aspnet
             if (arguments["--task"] != null)
                 task = arguments["--task"].ToString();
             if (arguments["--migrateToVersion"] != null)
-                migrateToVersion = arguments["--migrateToVersion"].AsInt;
+                migrateToVersion = arguments["--migrateToVersion"].AsLong();
             if (arguments["--profile"] != null)
                 profile = arguments["--profile"].ToString();
             if (arguments["--tag"] != null)
@@ -135,7 +135,7 @@ namespace FluentMigrator.Runner.Aspnet
         private string provider;
         private string connection;
         private string task;
-        private int migrateToVersion;
+        private long migrateToVersion;
         private string profile;
         private IEnumerable<string> tags;
         private string assembly;
