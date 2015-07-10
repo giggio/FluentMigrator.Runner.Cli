@@ -4,6 +4,8 @@ A runner for ASP.NET 5+ for [Fluent Migrator](https://github.com/schambers/fluen
 
 ## Installing
 
+### As a project dependency
+
 The nupkg is [on Nuget.org](https://www.nuget.org/packages/FluentMigrator.Runner.Aspnet), so
 simply run:
 
@@ -33,12 +35,32 @@ Or add the runner to your project manually, here is an example project.json:
 
 Or use the Package Manager in Visual Studio.
 
+### As a DNX tool
+
+DNX provides a way to install global tools using the `dnu commands install` command. Simply run:
+
+````powershell
+dnu commands install FluentMigrator.Runner.Aspnet
+````
+
+You will then have the `fm` tool available for you on the command line. The syntax is the same as if you had added the `migrate` command
+described above on the dependency install.
+
+If you use it as a tool you don't need to make any changes to the `project.json` file, you simply need the `FluentMigrator` dependency, so
+you can reference its API to create migrations. No need to add the `FluentMigrator.Runner.Aspnet` dependency or the command to that file.
+
 ## Running
 
 If you simply run `dnx migrate` the command line options will show up for you
 
 ````powershell
 dnx . migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
+````
+
+If you installed it as a global command, simply run the `fm` command:
+
+````powershell
+fm --provider sqlserver2012 --connectionString <yourconnectionstring>
 ````
 
 Here are all the options:
