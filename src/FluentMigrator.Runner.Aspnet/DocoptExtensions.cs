@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DocoptNet;
+﻿using DocoptNet;
+using System;
 
 namespace FluentMigrator.Runner.Aspnet
 {
     public static class DocoptExtensions
     {
-		public static long AsLong ( this ValueObject obj ) {
-			if (!obj.IsList)
-				return Convert.ToInt64(obj.Value);
-			return 0;
-		}
-	}
+        public static long AsLong(this ValueObject obj) =>
+            obj.IsList ? 0 : Convert.ToInt64(obj.Value);
+    }
 }

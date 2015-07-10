@@ -8,7 +8,7 @@ namespace TestMigrations
         public override void Up()
         {
             Create.Table("Person")
-                .WithColumn("Id").AsInt32().Identity().NotNullable()
+                .WithColumn("Id").AsInt32().Identity().PrimaryKey().NotNullable()
                 .WithColumn("Value").AsString();
         }
     }
