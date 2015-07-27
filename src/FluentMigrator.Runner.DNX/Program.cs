@@ -103,7 +103,7 @@ namespace FluentMigrator.Runner.DNX
         private string DnuBuild()
         {
             var dnuFileName = Environment.GetEnvironmentVariable("PATH")?
-                .Split(new[] {IsWindows ? ';' : ':'}, StringSplitOptions.RemoveEmptyEntries)
+                .Split(new[] {Path.PathSeparator}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(p => Path.Combine(p, IsWindows ? "dnu.cmd" : "dnu"))
                 .FirstOrDefault(File.Exists);
             if (dnuFileName == null)
@@ -128,7 +128,7 @@ namespace FluentMigrator.Runner.DNX
             var process = new Process { StartInfo = processStartInfo };
             process.Start();
             process.WaitForExit();
-            var migrationsDllPath = Path.Combine(assembly, @"bin/Debug/dnx451", Path.GetFileName(assembly) + ".dll");
+            var migrationsDllPath = Path.Combine(assembly, "bin", "Debug", "dnx451", Path.GetFileName(assembly) + ".dll");
             if (!File.Exists(migrationsDllPath))
             {
                 WriteLine($"Could not find assembly {migrationsDllPath}.");
