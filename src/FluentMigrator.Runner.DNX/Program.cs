@@ -102,24 +102,33 @@ namespace FluentMigrator.Runner.DNX
 
         private string DnuBuild()
         {
-            var dnuPath = Environment.GetEnvironmentVariable("PATH").Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(p => File.Exists(Path.Combine(p, "dnu.cmd")));
-            if (dnuPath == null)
+            var dnuFileName = Environment.GetEnvironmentVariable("PATH")?
+                .Split(new[] {IsWindows ? ';' : ':'}, StringSplitOptions.RemoveEmptyEntries)
+                .Select(p => Path.Combine(p, IsWindows ? "dnu.cmd" : "dnu"))
+                .FirstOrDefault(File.Exists);
+            if (dnuFileName == null)
             {
                 WriteLine("Dnu not found.");
                 return null;
             }
-            var dnuCmd = Path.Combine(dnuPath, "dnu.cmd");
-            if (verbose) WriteLine($"Found dnu: {dnuCmd}");
-            var cmd = Environment.GetEnvironmentVariable("ComSpec");
-            if (verbose) WriteLine($"Building project directory: {assembly}");
-            var processStartInfo = new ProcessStartInfo(cmd, $@"/c ""{dnuCmd}"" build --quiet --configuration Debug --framework dnx451");
-            processStartInfo.WorkingDirectory = assembly;
-            processStartInfo.UseShellExecute = false;
+            if (verbose)
+            {
+                WriteLine($"Found dnu: {dnuFileName}");
+                WriteLine($"Building project directory: {assembly}");
+            }
+            const string dnuArguments = "build --quiet --configuration Debug --framework dnx451";
+            var fileName = IsWindows ? Environment.GetEnvironmentVariable("ComSpec") : dnuFileName;
+            var arguments = IsWindows ? $@"/c ""{dnuFileName}"" {dnuArguments}" : dnuArguments;
+            var processStartInfo = new ProcessStartInfo(fileName, arguments)
+            {
+                WorkingDirectory = assembly,
+                UseShellExecute = false
+            };
             if (!verbose) processStartInfo.RedirectStandardOutput = true;
             var process = new Process { StartInfo = processStartInfo };
             process.Start();
             process.WaitForExit();
-            var migrationsDllPath = Path.Combine(assembly, @"bin\Debug\dnx451", Path.GetFileName(assembly) + ".dll");
+            var migrationsDllPath = Path.Combine(assembly, @"bin/Debug/dnx451", Path.GetFileName(assembly) + ".dll");
             if (!File.Exists(migrationsDllPath))
             {
                 WriteLine($"Could not find assembly {migrationsDllPath}.");
@@ -127,6 +136,8 @@ namespace FluentMigrator.Runner.DNX
             }
             return migrationsDllPath;
         }
+
+        private static bool IsWindows => Environment.OSVersion.Platform == PlatformID.Win32NT;
 
         private readonly ConsoleAnnouncer consoleAnnouncer = new ConsoleAnnouncer();
         private bool verbose;
