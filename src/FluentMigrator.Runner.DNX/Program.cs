@@ -122,7 +122,7 @@ namespace FluentMigrator.Runner.DNX
             var migrationsDllPath = Path.Combine(assembly, @"bin\Debug\dnx451", Path.GetFileName(assembly) + ".dll");
             if (!File.Exists(migrationsDllPath))
             {
-                WriteLine($"Could not find assembly ${migrationsDllPath}.");
+                WriteLine($"Could not find assembly {migrationsDllPath}.");
                 return null;
             }
             return migrationsDllPath;
