@@ -1,7 +1,6 @@
 ﻿{
     "version": "1.0.0-*",
     "dependencies": {
-        "FluentMigrator.ASPNET5Temp": "1.5.1",
         "FluentMigrator.Runner.DNX": ""
     },
     "frameworks": {
