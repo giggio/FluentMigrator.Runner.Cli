@@ -1,6 +1,6 @@
 ﻿{
   "title": "Fluent Migrator Runner for DNX",
-  "version": "1.0.0-alpha9",
+  "version": "1.0.0-beta1",
   "authors": [ "Giovanni Bassi" ],
   "description": "A runner for DNX for Fluent Migrator.",
   "summary": "A runner for DNX for Fluent Migrator.",
@@ -14,7 +14,7 @@
   "owners": [ "Giovanni Bassi" ],
   "tags": [ "FluentMigrator", "Migration", "Migrations" ],
   "dependencies": {
-    "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta8",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final",
     "FluentMigrator": "1.6.0",
     "FluentMigrator.Runner": "1.6.0",
     "docopt.net": "0.6.1.6"

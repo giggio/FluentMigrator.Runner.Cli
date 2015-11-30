@@ -1,7 +1,7 @@
 ﻿using DocoptNet;
 using FluentMigrator.Runner.Announcers;
 using FluentMigrator.Runner.Initialization;
-using Microsoft.Dnx.Runtime;
+using Microsoft.Extensions.PlatformAbstractions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

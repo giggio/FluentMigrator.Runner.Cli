@@ -6,7 +6,7 @@
   </PropertyGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>e1c54c4d-5df5-4004-be84-b95aae7898a9</ProjectGuid>
-    <RootNamespace>FluentMigrator.Runner.Aspnet</RootNamespace>
+    <RootNamespace>FluentMigrator.Runner.DNX</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>
