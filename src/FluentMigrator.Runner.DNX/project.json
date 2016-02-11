@@ -1,6 +1,6 @@
 ﻿{
   "title": "Fluent Migrator Runner for DNX",
-  "version": "1.0.0-beta1",
+  "version": "1.0.0-beta2",
   "authors": [ "Giovanni Bassi" ],
   "description": "A runner for DNX for Fluent Migrator.",
   "summary": "A runner for DNX for Fluent Migrator.",
@@ -29,5 +29,8 @@
     "**.xproj",
     "**.user",
     "**.vspscc"
-  ]
+  ],
+  "compilationOptions": {
+    "warningsAsErrors": true
+  }
 }
