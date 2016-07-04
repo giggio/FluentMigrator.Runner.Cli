@@ -198,6 +198,6 @@ FakesAssemblies/
 
 .vs
 
-# DNX
+# .NET CLI
 project.lock.json
 artifacts/

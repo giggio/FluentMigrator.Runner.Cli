@@ -1,0 +1,41 @@
+﻿{
+    "title": "Executor for Fluent Migrator Runner for .NET CLI",
+    "version": "1.0.0-beta3",
+    "authors": [ "Giovanni Bassi" ],
+    "description": "A runner for .NET CLI for Fluent Migrator.",
+    "copyright": "Giovanni Bassi (c) 2015-2016",
+    "dependencies": {
+        "FluentMigrator": "1.6.2",
+        "FluentMigrator.Runner": "1.6.2",
+        "docopt.net": "0.6.1.8",
+        "Microsoft.DotNet.ProjectModel": "1.0.0-rc3-*",
+        "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
+        "Microsoft.Extensions.CommandLineUtils": "1.0.0",
+        "Microsoft.Extensions.PlatformAbstractions": "1.0.0"
+    },
+    "frameworks": {
+        "net461": { }
+    },
+    "buildOptions": {
+        "emitEntryPoint": true,
+        "warningsAsErrors": true
+    },
+    "publishOptions": {
+        "exclude": [
+            "**.xproj",
+            "**.user",
+            "**.vspscc"
+        ]
+    },
+    "packOptions": {
+        "summary": "The executor for the runner for .NET CLI, for Fluent Migrator.",
+        "repository": {
+            "type": "git",
+            "url": "git://github.com/giggio/FluentMigrator.Runner.Cli"
+        },
+        "projectUrl": "https://github.com/giggio/FluentMigrator.Runner.Cli",
+        "licenseUrl": "https://raw.githubusercontent.com/giggio/FluentMigrator.Runner.Cli/master/LICENSE.txt",
+        "owners": [ "Giovanni Bassi" ],
+        "tags": [ "FluentMigrator", "Migration", "Migrations" ]
+    }
+}

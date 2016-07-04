@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "TestMigrations": {
+        "executablePath": "%programw6432%\\dotnet\\dotnet.exe",
+        "commandLineArgs": "migrate --provider sqlserver2012 --connectionString \"Server=(localdb)\\mssqllocaldb;Database=TestMigrations; Trusted_Connection=True;MultipleActiveResultSets=true\" --verbose --configuration $(Configuration)",
+        "workingDirectory": ".",
+        "environmentVariables": {
+            "DOTNET_CLI_CONTEXT_VERBOSE": "true",
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+    }
+  }
+}

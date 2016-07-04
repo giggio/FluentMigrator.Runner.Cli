@@ -1,7 +1,7 @@
 ﻿using DocoptNet;
 using System;
 
-namespace FluentMigrator.Runner.DNX
+namespace FluentMigrator.Runner.Cli
 {
     public static class DocoptExtensions
     {

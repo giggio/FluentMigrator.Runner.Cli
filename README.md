@@ -1,86 +1,56 @@
-# FluentMigrator DNX Runner
+# FluentMigrator .NET CLI Runner
 
-A DNX runner for [Fluent Migrator](https://github.com/schambers/fluentmigrator/).
+A .NET CLI runner for [Fluent Migrator](https://github.com/schambers/fluentmigrator/).
 
 ## Installing
 
-### As a project dependency
-
-The nupkg is [on Nuget.org](https://www.nuget.org/packages/FluentMigrator.Runner.DNX), so
-simply run:
-
-```powershell
-dnu install FluentMigrator.Runner.DNX
-```
-
-And add the command with name `FluentMigrator.Runner.DNX` to your project.
-
-Or add the runner to your project manually, here is an example project.json:
+Add the runner to your project manually, here is an example project.json:
 
 ````json
 {
     "version": "1.0.0-*",
     "dependencies": {
-        "FluentMigrator": "1.5.1",
-        "FluentMigrator.Runner.DNX": "1.0.0-*"
+        "FluentMigrator.Runner.Cli.Executor": "1.0.0-*"
     },
     "frameworks": {
-        "dnx451": { }
+        "net461": { }
     },
-    "commands": {
-        "migrate": "FluentMigrator.Runner.DNX"
+    "tools": {
+        "FluentMigrator.Runner.Cli": "1.0.0-*"
     }
 }
 ````
 
-Or use the Package Manager in Visual Studio.
-
-### As a DNX tool
-
-DNX provides a way to install global tools using the `dnu commands install` command. Simply run:
-
-````powershell
-dnu commands install FluentMigrator.Runner.DNX
-````
-
-You will then have the `fm` tool available for you on the command line. The syntax is the same as if you had added the `migrate` command
-described above on the dependency install.
-
-If you use it as a tool you don't need to make any changes to the `project.json` file, you simply need the `FluentMigrator` dependency, so
-you can reference its API to create migrations. No need to add the `FluentMigrator.Runner.DNX` dependency or the command to that file.
+Or use the Package Manager in Visual Studio. (only for dependencies, not tools).
 
 ## Running
 
-If you simply run `dnx migrate` the command line options will show up for you
+If you simply run `dotnet migrate` the command line options will show up for you.
+Here is a sample for SQL Server 2012:
 
 ````powershell
-dnx . migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
+dotnet migrate --provider sqlserver2012 --connectionString <yourconnectionstring>
 ````
 
-If you installed it as a global command, simply run the `fm` command:
-
-````powershell
-fm --provider sqlserver2012 --connectionString <yourconnectionstring>
-````
-
-Here are all the options:
+Here are all the options when you run `dotnet migrate --help`:
 
 ````
 Usage:
-    dnx . run --provider PROVIDER --connectionString CONNECTION [--assembly ASSEMBLY] [--output FILE] [--task TASK] [--migrateToVersion VERSION] [--profile PROFILE] [--tag TAG] [--verbose]
-    dnx . run --version
-    dnx . run --help
+    dotnet migrate --provider PROVIDER --connectionString CONNECTION [--outputFile FILE] [--task TASK] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--configuration CONFIGURATION] [--framework FRAMEWORK] [--build-base-path BUILD_BASE_PATH] [--output OUTPUT_DIR] [--verbose]
+    dotnet migrate --provider PROVIDER --noConnection --outputFile FILE [--task TASK] [--startVersion START] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--configuration CONFIGURATION] [--framework FRAMEWORK] [--build-base-path BUILD_BASE_PATH] [--output OUTPUT_DIR] [--verbose]
+    dotnet migrate --version
+    dotnet migrate --help
 ````
 
 ## Maintainer
 
 * [Giovanni Bassi](http://blog.lambda3.com.br/L3/giovannibassi/), aka Giggio, [Lambda3](http://www.lambda3.com.br), [@giovannibassi](http://twitter.com/giovannibassi)
 
-Contributors can be found at the [contributors](https://github.com/giggio/FluentMigrator.Runner.DNX/graphs/contributors) page on Github.
+Contributors can be found at the [contributors](https://github.com/giggio/FluentMigrator.Runner.Cli/graphs/contributors) page on Github.
 
 ## Contact
 
-I am only on Jabbr most of the day, usually on the [ASP.NET vNext room](https://jabbr.net/#/rooms/AspNetvNext), with user name `Giggio`.
+Use the github issues, or contact me on Twitter @giovannibassi.
 
 ## License
 

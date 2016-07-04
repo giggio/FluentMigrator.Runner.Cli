@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "FluentMigrator.Runner.Cli.Executor": {
+      "commandName": "Project",
+      "commandLineArgs": "migrate --provider sqlserver2012 --connectionString Server=(localdb)\\mssqllocaldb;Database=TestMigrations;Trusted_Connection=True;MultipleActiveResultSets=true --task migrate --migrateToVersion 0 --verbose --assembly C:\\p\\FluentMigrator.Runner.Cli\\test\\TestMigrations\\bin\\$(Configuration)\\net461\\TestMigrations.dll",
+      "workingDirectory": "..\\..\\test\\TestMigrations",
+      "environmentVariables": {
+        "DOTNET_CLI_CONTEXT_VERBOSE": "true"
+      }
+    }
+  }
+}

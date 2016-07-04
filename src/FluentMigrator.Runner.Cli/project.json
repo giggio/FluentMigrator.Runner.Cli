@@ -1,0 +1,49 @@
+﻿{
+    "title": "Fluent Migrator Runner for .NET CLI",
+    "version": "1.0.0-beta3",
+    "authors": [ "Giovanni Bassi" ],
+    "description": "A runner for .NET CLI for Fluent Migrator.",
+    "copyright": "Giovanni Bassi (c) 2015-2016",
+    "dependencies": {
+        "Microsoft.NETCore.App": {
+            "type": "platform",
+            "version": "1.0.0"
+        },
+        "System.Collections.NonGeneric": "4.0.1",
+        "docopt.net": "0.6.1.8",
+        "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
+        "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
+        "Microsoft.DotNet.ProjectModel": "1.0.0-rc3-*",
+        "Microsoft.DotNet.Compiler.Common": "1.0.0-preview2-003121"
+    },
+    "frameworks": {
+        "netcoreapp1.0": {
+            "imports": [
+                "portable-net45+win8",
+                "dnxcore50"
+            ]
+        }
+    },
+    "buildOptions": {
+        "emitEntryPoint": true,
+        "outputName": "dotnet-migrate"
+    },
+    "publishOptions": {
+        "exclude": [
+            "**.xproj",
+            "**.user",
+            "**.vspscc"
+        ]
+    },
+    "packOptions": {
+        "summary": "A runner for .NET CLI for Fluent Migrator.",
+        "repository": {
+            "type": "git",
+            "url": "git://github.com/giggio/FluentMigrator.Runner.Cli"
+        },
+        "projectUrl": "https://github.com/giggio/FluentMigrator.Runner.Cli",
+        "licenseUrl": "https://raw.githubusercontent.com/giggio/FluentMigrator.Runner.Cli/master/LICENSE.txt",
+        "owners": [ "Giovanni Bassi" ],
+        "tags": [ "FluentMigrator", "Migration", "Migrations" ]
+    }
+}

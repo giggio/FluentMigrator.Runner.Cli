@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "dotnet-migrate": {
+        "executablePath": "%programw6432%\\dotnet\\dotnet.exe",
+        "commandLineArgs": "..\\..\\src\\FluentMigrator.Runner.Cli\\bin\\$(Configuration)\\netcoreapp1.0\\dotnet-migrate.dll --provider sqlserver2012 --connectionString \"Server=(localdb)\\mssqllocaldb;Database=TestMigrations; Trusted_Connection=True;MultipleActiveResultSets=true\" --verbose --configuration $(Configuration)",
+        "workingDirectory": "..\\..\\test\\TestMigrations",
+        "environmentVariables": {
+            "DOTNET_CLI_CONTEXT_VERBOSE": "true"
+        }
+    }
+  }
+}
