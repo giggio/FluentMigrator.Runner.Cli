@@ -52,7 +52,7 @@ namespace FluentMigrator.Runner.Cli
     --outputFile FILE -f FILE                                File to output the script. If specified will write to a file instead of running the migration. [default: migration.sql]
     --task TASK -t TASK                                  The task to run. [default: migrate]
     --noConnection                                       Indicates that migrations will be generated without consulting a target database. Should only be used when generating an output file.
-    --startVersion START                                 The specific version to start migrating from. Only used when NoConnection is true.
+    --startVersion START                                 The specific version to start migrating from. Only used when NoConnection is true. [default: 0]
     --migrateToVersion END                               The specific version to migrate. Default is 0, which will run all migrations. [default: 0]
     --profile PROFILE                                    The profile to run after executing migrations.
     --tag TAG                                            Filters the migrations to be run by tag.

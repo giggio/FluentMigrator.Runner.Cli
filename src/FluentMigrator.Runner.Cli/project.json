@@ -1,6 +1,6 @@
 ﻿{
     "title": "Fluent Migrator Runner for .NET CLI",
-    "version": "1.0.0-beta3",
+    "version": "1.0.0-beta4",
     "authors": [ "Giovanni Bassi" ],
     "description": "A runner for .NET CLI for Fluent Migrator.",
     "copyright": "Giovanni Bassi (c) 2015-2016",
