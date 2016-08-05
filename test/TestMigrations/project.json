@@ -13,7 +13,7 @@
     //The tools bellow will only work if you place a nupkg on ..\..\src\FluentMigrator.Runner.Cli\bin\Debug\, see Nuget.Config.
     "tools": {
         "FluentMigrator.Runner.Cli": {
-            "version": "1.0.0-*"
+            "version": "1.0.0-beta5"
         }
     }
 }

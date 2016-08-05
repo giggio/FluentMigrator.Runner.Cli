@@ -102,6 +102,8 @@ namespace FluentMigrator.Runner.Cli
             argsToInvoke.Remove("--framework");
             argsToInvoke.Remove("--build-base-path");
             argsToInvoke.Remove("--output");
+            if (argsToInvoke["--startVersion"].AsLong() == 0)
+                argsToInvoke.Remove("--startVersion");
             if (string.IsNullOrWhiteSpace(outputFile))
                 argsToInvoke.Remove("--outputFile");
             var argsToInvokeString = argsToInvoke
