@@ -17,8 +17,8 @@ namespace FluentMigrator.Runner.Cli.Executor
         {
             var usage = @"Fluent Migrator .NET CLI Runner
   Usage:
-    dotnet migrate --provider PROVIDER --connectionString CONNECTION --assembly ASSEMBLY [--outputFile FILE] [--task TASK] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--verbose]
-    dotnet migrate --provider PROVIDER --noConnection --outputFile FILE --assembly ASSEMBLY [--task TASK] [--startVersion START] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--verbose]
+    dotnet migrate --provider PROVIDER --connectionString CONNECTION --assembly ASSEMBLY [--outputFile FILE] [--task TASK] [--steps=1] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--verbose]
+    dotnet migrate --provider PROVIDER --noConnection --outputFile FILE --assembly ASSEMBLY [--task TASK] [--steps=1] [--startVersion START] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--verbose]
     dotnet migrate --version
     dotnet migrate --help
 
@@ -37,7 +37,8 @@ namespace FluentMigrator.Runner.Cli.Executor
                                                            * jet
     --connectionString CONNECTION -c CONNECTION          The connection string. Required.
     --assembly ASSEMBLY -a ASSEMBLY                      The project or assembly which contains the migrations. Required.
-    --outputFile FILE -f FILE                                File to output the script. If specified will write to a file instead of running the migration. [default: migration.sql]
+    --outputFile FILE -f FILE                            File to output the script. If specified will write to a file instead of running the migration. [default: migration.sql]
+    --steps=NUM                                          The number of versions to rollback if the task is 'rollback'. Default is 1.
     --task TASK -t TASK                                  The task to run. [default: migrate]
     --noConnection                                       Indicates that migrations will be generated without consulting a target database. Should only be used when generating an output file.
     --startVersion START                                 The specific version to start migrating from. Only used when NoConnection is true. [default: 0]
@@ -74,6 +75,8 @@ namespace FluentMigrator.Runner.Cli.Executor
                 WriteLine($"Incorrect assembly name.");
                 return;
             }
+            if (arguments["--steps"] != null)
+                steps = arguments["--steps"].AsInt;
             if (arguments["--task"] != null)
                 task = arguments["--task"].ToString();
             if (arguments["--migrateToVersion"] != null)
@@ -94,6 +97,7 @@ namespace FluentMigrator.Runner.Cli.Executor
         private static bool noConnection;
         private static string provider;
         private static string connection;
+        private static int steps;
         private static string task;
         private static long startVersion;
         private static long migrateToVersion;
@@ -134,6 +138,7 @@ namespace FluentMigrator.Runner.Cli.Executor
                 Connection = connection,
                 Targets = new[] { assembly },
                 PreviewOnly = false,
+                Steps = steps,
                 Task = task,
                 NoConnection = noConnection,
                 StartVersion = startVersion,

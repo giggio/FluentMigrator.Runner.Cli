@@ -18,6 +18,7 @@ namespace FluentMigrator.Runner.Cli
         private static bool noConnection;
         private static string provider;
         private static string connection;
+        private static int steps;
         private static string task;
         private static long startVersion;
         private static long migrateToVersion;
@@ -30,8 +31,8 @@ namespace FluentMigrator.Runner.Cli
         {
             const string usage = @"Fluent Migrator .NET CLI Runner
   Usage:
-    dotnet migrate --provider PROVIDER --connectionString CONNECTION [--outputFile FILE] [--task TASK] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--configuration CONFIGURATION] [--framework FRAMEWORK] [--build-base-path BUILD_BASE_PATH] [--output OUTPUT_DIR] [--verbose]
-    dotnet migrate --provider PROVIDER --noConnection --outputFile FILE [--task TASK] [--startVersion START] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--configuration CONFIGURATION] [--framework FRAMEWORK] [--build-base-path BUILD_BASE_PATH] [--output OUTPUT_DIR] [--verbose]
+    dotnet migrate --provider PROVIDER --connectionString CONNECTION [--outputFile FILE] [--task TASK] [--steps=1] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--configuration CONFIGURATION] [--framework FRAMEWORK] [--build-base-path BUILD_BASE_PATH] [--output OUTPUT_DIR] [--verbose]
+    dotnet migrate --provider PROVIDER --noConnection --outputFile FILE [--task TASK] [--steps=1] [--startVersion START] [--migrateToVersion END] [--profile PROFILE] [--tag TAG] [--configuration CONFIGURATION] [--framework FRAMEWORK] [--build-base-path BUILD_BASE_PATH] [--output OUTPUT_DIR] [--verbose]
     dotnet migrate --version
     dotnet migrate --help
 
@@ -49,7 +50,8 @@ namespace FluentMigrator.Runner.Cli
                                                            * sqlite
                                                            * jet
     --connectionString CONNECTION -c CONNECTION          The connection string. Required.
-    --outputFile FILE -f FILE                                File to output the script. If specified will write to a file instead of running the migration. [default: migration.sql]
+    --outputFile FILE -f FILE                            File to output the script. If specified will write to a file instead of running the migration. [default: migration.sql]
+    --steps=NUM                                          The number of versions to rollback if the task is 'rollback'. Default is 1.
     --task TASK -t TASK                                  The task to run. [default: migrate]
     --noConnection                                       Indicates that migrations will be generated without consulting a target database. Should only be used when generating an output file.
     --startVersion START                                 The specific version to start migrating from. Only used when NoConnection is true. [default: 0]
@@ -87,6 +89,8 @@ namespace FluentMigrator.Runner.Cli
                 WriteLine("Could not compile.");
                 return;
             }
+            if (arguments["--steps"] != null)
+                steps = arguments["--steps"].AsInt;
             if (arguments["--task"] != null)
                 task = arguments["--task"].ToString();
             if (arguments["--migrateToVersion"] != null)
